@@ -1,0 +1,27 @@
+openapi: 3.0.3
+info:
+  title: "bug report"
+  version: "1.0.0"
+  description: "bug report 201 not returned for apis marked 201"
+servers:
+  - url: https://localhost
+components:
+  schemas:
+    Thing:
+      type: object
+      properties:
+        name: { type: string }
+
+paths:
+  /v1/Things:
+    post:
+      tags:
+        - things
+      operationId: thingsCreate
+      responses:
+        "201":
+          description: Created
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/Thing"
